@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Te gusta el pan?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            text-align: center;
+        }
+        #container {
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #no {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>¿Te gusta el pan?</h1>
+        <button id="yes">Sí</button>
+        <button id="no">No</button>
+    </div>
+
+    <script>
+        document.getElementById('yes').addEventListener('click', function() {
+            alert('Ami tambien 😀');
+        });
+
+        document.getElementById('no').addEventListener('click', function() {
+            const container = document.getElementById('container');
+            const noButton = document.getElementById('no');
+            const containerRect = container.getBoundingClientRect();
+            const noButtonRect = noButton.getBoundingClientRect();
+            
+            const maxLeft = containerRect.width - noButtonRect.width;
+            const maxTop = containerRect.height - noButtonRect.height;
+
+            const newLeft = Math.floor(Math.random() * maxLeft);
+            const newTop = Math.floor(Math.random() * maxTop);
+
+            noButton.style.left = `${newLeft}px`;
+            noButton.style.top = `${newTop}px`;
+        });
+    </script>
+</body>
+</html>
